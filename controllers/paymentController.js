@@ -1,5 +1,5 @@
 const asyncErrorHandler = require('../middlewares/asyncErrorHandler');
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+// const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const paytm = require('paytmchecksum');
 const https = require('https');
 const Payment = require('../models/paymentModel');
@@ -11,7 +11,7 @@ const { v4: uuidv4 } = require('uuid');
 //         amount: req.body.amount,
 //         currency: "inr",
 //         metadata: {
-//             company: "GV-MART",
+//             company: "Flipkart",
 //         },
 //     });
 
@@ -63,30 +63,6 @@ exports.processPayment = asyncErrorHandler(async (req, res, next) => {
 });
 
 // Paytm Callback
-
-// exports.stripeResponse = async (req, res, next) => {
-
-//     const sig = req.headers['stripe-signature'];
-//     let event;
-
-//     try {
-//         event = stripe.webhooks.constructEvent(req.rawBody, sig, process.env.STRIPE_SECRET_KEY);
-//     } catch (err) {
-//         console.log(`Webhook error: ${err.message}`);
-//         return res.status(400).send(`Webhook Error: ${err.message}`);
-//     }
-
-//     if (event.type === 'payment_intent.succeeded') {
-//         const paymentIntent = event.data.object;
-//         const order = await processOrder(paymentIntent.metadata.order_id);
-//         res.redirect(`https://${req.get("host")}/order/${order.id}`);
-//     } else {
-//         console.log(`Unhandled event type: ${event.type}`);
-//     }
-
-//     res.sendStatus(200);
-// };
-
 exports.paytmResponse = (req, res, next) => {
 
     // console.log(req.body);

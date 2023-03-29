@@ -33,7 +33,7 @@ exports.processPayment = asyncErrorHandler(async (req, res, next) => {
     var params = {};
 
     /* initialize an array */
-    params["MID"] = hyBWts58396405114278;
+    params["MID"] = process.env.PAYTM_MID;
     params["WEBSITE"] = process.env.PAYTM_WEBSITE;
     params["CHANNEL_ID"] = process.env.PAYTM_CHANNEL_ID;
     params["INDUSTRY_TYPE_ID"] = process.env.PAYTM_INDUSTRY_TYPE;

@@ -68,7 +68,7 @@ const Payment = () => {
             );
 
             let info = {
-                action: "https://securegw-stage.paytm.in/order/process",
+                action: "https://securegw.paytm.in/order/process",
                 params: data.paytmParams
             }
 
